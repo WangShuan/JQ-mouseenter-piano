@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>JQuery自定義動畫案例2</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      text-align: center;
+    }
+
+    .nav {
+      width: 900px;
+      height: 60px;
+      background-color: lavender;
+      margin: 80px auto;
+    }
+
+    .nav li {
+      width: 100px;
+      height: 60px;
+      float: left;
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .nav a {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      font-size: 24px;
+      color: darkslateblue;
+      text-align: center;
+      line-height: 60px;
+      text-decoration: none;
+      z-index: 2;
+    }
+
+    .nav span {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: mediumpurple;
+      top: 60px;
+    }
+
+    h3 {
+      color: mediumpurple;
+      width: 600px;
+      height: 50px;
+      line-height: 50px;
+      margin: 50px auto 10px;
+      text-align: center;
+    }
+
+    p {
+      width: 350px;
+      height: auto;
+      background-color: rgb(240, 230, 255);
+      line-height: 20px;
+      padding: 10px 20px;
+      border: 1px solid mediumpurple;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    u {
+      background-color: lavender;
+      margin: 0 auto;
+      display: inline-block;
+      color: darkblue;
+    }
+  </style>
+  <script src="./jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+
+    })
+  </script>
+</head>
+
+<body>
+  <h3>鋼琴案例：</h3>
+
+  <u>
+    //為了防止動畫一直被執行 在執行動畫前先停止所有動畫
+  </u>
+
+  <p>鼠標移入讓當前背景滑入滑出並播放音頻</p>
+
+  <div class="nav">
+    <ul>
+      <li><a href="#">琴鍵1</a><span></span></li>
+      <li><a href="#">琴鍵2</a><span></span></li>
+      <li><a href="#">琴鍵3</a><span></span></li>
+      <li><a href="#">琴鍵4</a><span></span></li>
+      <li><a href="#">琴鍵5</a><span></span></li>
+      <li><a href="#">琴鍵6</a><span></span></li>
+      <li><a href="#">琴鍵7</a><span></span></li>
+      <li><a href="#">琴鍵8</a><span></span></li>
+      <li><a href="#">琴鍵9</a><span></span></li>
+    </ul>
+
+    <div>
+      <audio src="./mp3/1.ogg"></audio>
+      <audio src="./mp3/2.ogg"></audio>
+      <audio src="./mp3/1.ogg"></audio>
+      <audio src="./mp3/2.ogg"></audio>
+      <audio src="./mp3/1.ogg"></audio>
+      <audio src="./mp3/2.ogg"></audio>
+      <audio src="./mp3/1.ogg"></audio>
+      <audio src="./mp3/2.ogg"></audio>
+      <audio src="./mp3/1.ogg"></audio>
+    </div>
+  </div>
+
+  <script>
+    $(function () {
+      $('.nav li').mouseenter(function () {
+        $(this).find('span').stop().animate({
+          top: 0
+        })
+        var i = $(this).index()
+        $('audio').get(i).load()
+        $('audio').get(i).play()
+      }).mouseleave(function () {
+        $(this).find('span').stop().animate({
+          top: 60
+        })
+      })
+    })
+  </script>
+</body>
+
+</html>
